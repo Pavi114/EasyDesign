@@ -1,0 +1,180 @@
+html, body {
+    background-color: #e5e5e5;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.container {
+    height: 100%;
+}
+
+.row {
+    height: 100%;
+    margin-bottom: 2px;
+}
+
+.menu {
+    width: 100%;
+    overflow-x: hidden;
+    padding: 3px;
+    height: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+.layer {
+    background-color: #2a2f4ee5;
+    color: #fff;
+    margin: 0;
+    margin-top: 5px;
+    padding: 5px;
+    width: 100%;
+    text-transform: uppercase;
+    border: 1px solid #000000be;
+}
+
+.modal {
+    color: #000;
+}
+
+#compile {
+    position: absolute;
+    bottom: 3%;
+    left: 50%;
+    border: 2px solid #000000be;
+    width: 50%;
+    background: #000075;
+    padding: 5px;
+    color: #fff;
+    transform: translateX(-50%);
+}
+
+#model-summary {
+    border: 1px solid #000000be;
+    width: 40%;
+    color: #000;
+    background: #b93535c7;
+    border-radius: 5px;
+    position: absolute;
+    right: 5%;
+    top: 3%;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+#model-summary:hover {
+    background: #b93535;
+    cursor: pointer;
+}
+
+#compile:hover {
+    background: #1414ff;
+    cursor: pointer;
+}
+
+.pictorial {
+    background: #162626;
+}
+
+.sub-menu {
+    margin: 2px;
+    margin-top: 0;
+    background: #cccccc;
+    padding: 10px;
+}
+
+.add {
+    width: 20%;
+    padding: 5px;
+    margin-top: 10px;
+    margin-left: 39%;
+    border: 0;
+    color: #fff;
+    background: #2a2f4ee5;
+
+}
+
+#canvas {
+    width: 99vh;
+    height: 99vh;
+}
+
+.pictorial h2 {
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.pictorial h2 p {
+    font-size: 0.5em;
+}
+
+button {
+    cursor: pointer;
+}
+
+#train-model {
+    padding: 12px;
+    background: #c5c475;
+}
+
+#train-model .row {
+    height: auto;
+}
+
+#evaluate-model {
+    padding: 40px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    background: #be87a7;
+}
+
+#summary {
+    position: absolute;
+    bottom: 35%;
+    left: 20%;
+    background: rgb(119, 52, 110);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+}
+
+#summary ul {
+    list-style: none;
+}
+
+#evaluate-model button {
+    background: #430d58;
+    width: 80%;
+    color: #fff;
+}
+
+#evaluate {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 60%;
+}
+
+#save-model {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 50%;
+}
+
+.form-control-file {
+    background: rgb(247, 243, 243);
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 100%;
+    }
+}

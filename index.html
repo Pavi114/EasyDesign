@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Intro to Tfjs</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="menu col-md-6" id="make-model">
+
+                <div class="row" style="height: auto">
+                    <div class="col-md-6">
+                        <h3>Make Your Model</h3>
+                    </div>
+                    <div class="col-md-6"><button type="button" id="model-summary">Summary</button></div>
+                </div>
+                <button type="button" class="layer" id="dense">Dense</button>
+                <div class="sub-menu hidden" id="sub-menu-dense">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <input type="text" id="input-shape-dense" class="form-control"
+                                placeholder="Input Shape(eg: 2,3)">
+                        </div>
+                        <div class="col-md-4">
+                            <input type="number" id="output-shape-dense" class="form-control" required
+                                placeholder="Output Shape (eg 2)">
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-control" id="activation-dense">
+                                <option>Activation Function</option>
+                                <option>relu</option>
+                                <option>softmax</option>
+                                <option>sigmoid</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="button" class="add" id="add-dense">Add</button>
+                </div>
+
+
+                <button type="button" class="layer" id="conv2d">conv2d</button>
+                <div class="sub-menu hidden" id="sub-menu-conv2d">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" id="input-shape-conv2d" class="form-control"
+                                placeholder="Input Shape(eg: 2,3)">
+                        </div>
+                        <div class="col-md-6">
+                            <select class="form-control" id="activation-conv2d">
+                                <option>Activation Function</option>
+                                <option>relu</option>
+                                <option>softmax</option>
+                                <option>sigmoid</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <input type="text" id="kernel-size-conv2d" class="form-control"
+                                placeholder="Kernel Size(eg: 5)" required>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" id="filter-conv2d" class="form-control" placeholder="filter (eg: 2)">
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" id="stride-conv2d" class="form-control" placeholder="Stride (eg: 2,3)">
+                        </div>
+                    </div>
+                    <button type="button" class="add" id="add-conv2d">Add</button>
+                </div>
+
+                <button type="button" class="layer" id="maxPooling2d">MaxPooling2D</button>
+                <div class="sub-menu hidden" id="sub-menu-maxPooling2d">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" id="pool-size-maxPooling2d" class="form-control"
+                                placeholder="Pool Size (eg: 2)">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="number" id="stride-maxPooling2d" class="form-control" required
+                                placeholder="Strides (eg 2)">
+                        </div>
+                    </div>
+                    <button type="button" class="add" id="add-maxPooling2d">Add</button>
+                </div>
+
+                <button type="button" class="layer" id="flatten">Flatten</button>
+
+
+                <br>
+                <button type="button" id="compile">Compile</button>
+            </div>
+
+
+            <div class="col-md-6 pictorial">
+                <canvas id="canvas"></canvas>
+            </div>
+
+            <div class="menu hidden col-md-6" id="train-model">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="epochs">Epochs:</label>
+                        <input class="form-control" type="number" id="epochs">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="batch-size">Batch Size</label>
+                        <input type="number" class="form-control" id="batch-size">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="optimizer">Optimizer</label>
+                    <select class="form-control" id="optimizer">
+                        <option>adam</option>
+                        <option>sgd</option>
+                        <option>rmsprop</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="loss">Loss</label>
+                    <select class="form-control" id="loss">
+                        <option>meanSquaredError</option>
+                        <option>categoricalCrossentropy</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="metrics">Metrics</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="mse" id="check1">
+                        <label class="form-check-label" for="check1">
+                            mse
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="accuracy" id="check2">
+                        <label class="form-check-label" for="check2">
+                            accuracy
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="input-train-data">Input Train Data (in json format)</label>
+                    <input type="file" class="form-control-file" id="input-train-data">
+                </div>
+                <div class="form-group">
+                    <label for="output-train-data">Output Train Data(in json format)</label>
+                    <input type="file" class="form-control-file" id="output-train-data">
+                </div>
+                <button type="button" id="train" class="btn btn-primary">Train</button>
+                <button type="button" id="analysis" class="btn btn-primary">Evaluate</button>
+                <button type="button" id="sample" class="btn btn-primary">Train on MNIST Digit Recognition</button>
+            </div>
+
+            <div class="menu hidden" id="evaluate-model">
+                <div class="form-group">
+                    <label for="input-test-data">Input Test Data</label>
+                    <input type="file" class="form-control-file" id="input-test-data">
+                </div>
+                <div class="form-group">
+                    <label for="output-test-data">Output Test Data</label>
+                    <input type="file" class="form-control-file" id="output-test-data">
+                </div>
+                <button type="button" class="btn" id="evaluate">Evaluate</button> <br>
+                <button type="button" id="save-model" class="btn btn-primary">Save Model</button>
+                <div class="hidden" id="summary">
+                    <ul>
+                        <li>Epochs: </li>
+                        <li>Test Accuracy: </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis@1.4.0/dist/tfjs-vis.umd.min.js"></script>
+    <script src="index.js"></script>
+    <script src="data.js"></script>
+    <script src="network.js"></script>
+</body>
+
+</html>
