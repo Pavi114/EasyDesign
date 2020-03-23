@@ -25,11 +25,11 @@
                     <div class="row">
                         <div class="col-md-4">
                             <input type="text" id="input-shape-dense" class="form-control"
-                                placeholder="Input Shape(eg: 2,3)">
+                                placeholder="Input Shape(separate dimension with comma)">
                         </div>
                         <div class="col-md-4">
                             <input type="number" id="output-shape-dense" class="form-control" required
-                                placeholder="Output Shape (eg 2)">
+                                placeholder="Output Shape (an integer)">
                         </div>
                         <div class="col-md-4">
                             <select class="form-control" id="activation-dense">
@@ -49,7 +49,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <input type="text" id="input-shape-conv2d" class="form-control"
-                                placeholder="Input Shape(eg: 2,3)">
+                                placeholder="Input Shape(28,28,1)">
                         </div>
                         <div class="col-md-6">
                             <select class="form-control" id="activation-conv2d">
@@ -63,13 +63,13 @@
                     <div class="row">
                         <div class="col-md-4">
                             <input type="text" id="kernel-size-conv2d" class="form-control"
-                                placeholder="Kernel Size(eg: 5)" required>
+                                placeholder="Kernel Size(an integer)" required>
                         </div>
                         <div class="col-md-4">
-                            <input type="text" id="filter-conv2d" class="form-control" placeholder="filter (eg: 2)">
+                            <input type="text" id="filter-conv2d" class="form-control" placeholder="filter (an integer)">
                         </div>
                         <div class="col-md-4">
-                            <input type="text" id="stride-conv2d" class="form-control" placeholder="Stride (eg: 2,3)">
+                            <input type="text" id="stride-conv2d" class="form-control" placeholder="Stride (separate dimension with comma)">
                         </div>
                     </div>
                     <button type="button" class="add" id="add-conv2d">Add</button>
@@ -80,11 +80,11 @@
                     <div class="row">
                         <div class="col-md-6">
                             <input type="text" id="pool-size-maxPooling2d" class="form-control"
-                                placeholder="Pool Size (eg: 2)">
+                                placeholder="Pool Size (an integer)">
                         </div>
                         <div class="col-md-6">
                             <input type="number" id="stride-maxPooling2d" class="form-control" required
-                                placeholder="Strides (eg 2)">
+                                placeholder="Strides (an integer)">
                         </div>
                     </div>
                     <button type="button" class="add" id="add-maxPooling2d">Add</button>
